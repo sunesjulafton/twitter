@@ -72,6 +72,39 @@
 			}
 		}
 
+
+		public function getTrendByHash($hashtag) {
+			$stmt = $this->pdo->prepare("SELECT * FROM trends WHERE hashtag LIKE ? LIMIT 5");
+			$stmt->bindValue(1, $hashtag.'%');
+			$stmt->execute();
+			return $stmt->fetchAll(PDO::FETCH_OBJ);
+		}
+
+
+		public function getMention($mention) {
+			$stmt = $this->pdo->prepare('SELECT user_id, username, screen_name, profile_image FROM users WHERE username LIKE ? OR screen_name LIKE ? LIMIT 5');
+			$stmt->bindValue(1, $mention. '%');
+			$stmt->bindValue(2, $mention. '%');
+			$stmt->execute();
+			return $stmt->fetchAll(PDO::FETCH_OBJ);
+		}
+
+		public function addTrend($hashtag) {
+			preg_match_all("/#+([a-zA-Z0-9_]+)/i", $hashtag, $matches);
+			if($matches) {
+				$result = array_values($matches[1]);
+
+			}
+			$sql = 'INSERT INTO trends (hashtag, createdOn) VALUES (?, CURRENT_TIMESTAMP)';
+			foreach($result as $trend) {
+				
+				if($stmt = $this->pdo->prepare($sql)) {
+					$stmt->bindValue(1, $trend. '%');
+					$stmt->execute(array($trend));
+				}
+			}
+		}
+
 	}
 
 ?>
