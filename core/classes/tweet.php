@@ -70,7 +70,7 @@
 							' : '
 
 
-							<div class="t-show-popup">
+							<div class="t-show-popup" data-tweet="'.$tweet->tweetID.'">
 								<div class="t-show-head">
 									<div class="t-show-img">
 										<img src="'. $tweet->profile_image .'"/>
@@ -187,6 +187,13 @@
 			$stmt->bindParam(2, $user_id, PDO::PARAM_INT);
 			$stmt->execute();
 			return $stmt->fetch(PDO::FETCH_ASSOC);
+		}
+
+		public function comments($tweet_id) {
+			$stmt = $this->pdo->prepare('SELECT * FROM comments LEFT JOIN users ON commentBy = user_id WHERE commentOn = ?');
+			$stmt->bindParam(1, $tweet_id, PDO::PARAM_INT);
+			$stmt->execute();
+			return $stmt->fetchAll(PDO::FETCH_OBJ);
 		}
 
 		public function addLike($user_id, $tweet_id, $get_id) {
