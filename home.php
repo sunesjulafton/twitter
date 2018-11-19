@@ -7,6 +7,9 @@
 		header('Location: index.php');
 	}
 	
+
+
+
 	if(isset($_POST['tweet'])) {
 		$status = $getFromU->checkInput($_POST['status']);
 		$tweetImage = '';
@@ -213,6 +216,9 @@
  			<script type="text/javascript" src="assets/js/like.js"></script>
  			<script type="text/javascript" src="assets/js/retweet.js"></script>
  			<script type="text/javascript" src="assets/js/popuptweets.js"></script>
+ 			<script type="text/javascript" src="assets/js/delete.js"></script>
+ 			<script type="text/javascript" src="assets/js/comment.js"></script>
+ 			
 			</div><!-- in left wrap-->
 		</div><!-- in center end -->
 
