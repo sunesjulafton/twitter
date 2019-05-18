@@ -107,12 +107,13 @@
 										<li><button><i class="fa fa-share" aria-hidden="true"></i></button></li>	
 										<li>'.(($tweet->tweetID === $retweet['retweetID']) ? '<button class="retweeted" data-tweet="'. $tweet->tweetID.'" data-user="'.$tweet->tweetBy.'"><i class="fa fa-retweet" aria-hidden="true"></i><span class="retweetCount">'.$tweet->retweetCount.'</span></button>' : '<button class="retweet" data-tweet="'. $tweet->tweetID.'" data-user="'.$tweet->tweetBy.'"><i class="fa fa-retweet" aria-hidden="true"></i><span class="retweetCount">'.(($tweet->retweetCount > 0) ? $tweet->retweetCount : '').'</span></button>').'</li>
 										<li>'.(($likes['likeOn'] === $tweet->tweetID) ? '<button class="unlike-btn" data-tweet="' . $tweet->tweetID.'" data-user="'. $tweet->tweetBy.'"><i class="fa fa-heart" aria-hidden="true"></i><span class="likesCounter">'. $tweet->likesCount .'</span></button>' : '<button class="like-btn" data-tweet="' . $tweet->tweetID.'" data-user="'. $tweet->tweetBy.'"><i class="fa fa-heart-o" aria-hidden="true"></i><span class="likesCounter">'. (($tweet->likesCount > 0) ? $tweet->likesCount : '') . '</span></button>').'</li>
-											<li>
+										'.(($tweet->tweetBy === $user_id) ? '
+										<li>
 											<a href="#" class="more"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
 											<ul> 
-											  <li><label class="deleteTweet">Delete Tweet</label></li>
+											  <li><label class="deleteTweet" data-tweet="'.$tweet->tweetID.'">Delete Tweet</label></li>
 											</ul>
-										</li>
+										</li> ':'').'
 									</ul>
 								</div>
 							</div>
