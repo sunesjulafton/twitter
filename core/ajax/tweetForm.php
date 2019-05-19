@@ -2,7 +2,7 @@
  <!-- POPUP TWEET-FORM WRAP -->
 <div class="popup-tweet-wrap">
 		<div class="wrap">
-		
+
 		<div class="popwrap-inner">
 			<div class="popwrap-header">
 				<div class="popwrap-h-left">
@@ -13,8 +13,8 @@
 				</span>
 			</div>
 			<div class="popwrap-full">
-			 <form id="myForm" method="POST" enctype="multipart/form-data">
-				<div id="popupForm" class="popwrap-body">
+			 <form id="popupForm" method="POST" enctype="multipart/form-data">
+				<div class="popwrap-body">
 				 <textarea class="status" name="status" maxlength="141" placeholder="Type Something here!" rows="4" cols="50"></textarea>
 				 	<div class="hash-box">
 				 		<ul>
